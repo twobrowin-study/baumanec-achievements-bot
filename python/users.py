@@ -144,5 +144,6 @@ async def achivment_manufacture_list_callback(update: Update, context: ContextTy
     else:
         reply_markup = Achievements.get_user_achievements_manufacture_inline_keyboard(chat_id)
 
-    await update.effective_message.edit_reply_markup(reply_markup)
+    if reply_markup != old_reply_markup:
+        await update.effective_message.edit_reply_markup(reply_markup)
 UsersAdapterClass.achivment_manufacture_list_callback = achivment_manufacture_list_callback
