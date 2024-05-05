@@ -1,5 +1,11 @@
 import os, sys, json, dotenv
-from spreadsheetbot import SpreadSheetBot, Log, DEBUG
+from telegram.ext import CallbackQueryHandler
+from spreadsheetbot import Log, DEBUG
+
+from users import UsersAdapterClass
+from spreadsheetbot_ext import SpreadSheetBot
+from log_ext import LogSheetAdapterClass
+from achievements import Achievements
 
 if "DOCKER_RUN" in os.environ:
     Log.info("Running in docker environment")
@@ -25,4 +31,12 @@ if __name__ == "__main__":
         SWITCH_UPDATE_TIME,
         SETTINGS_UPDATE_TIME
     )
-    bot.run_polling()
+    bot.run_polling(
+        extra_user_handlers = [
+            CallbackQueryHandler(
+                callback = UsersAdapterClass.achivment_manufacture_list_callback,
+                pattern  = Achievements.CALLBACK_ACHIEVMENT_MANUFACTURE_PATTERN,
+                block    = False
+            )
+        ]
+    )

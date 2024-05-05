@@ -1,8 +1,16 @@
-# Универсальный бот - библиотека и человек
-
-[Пример таблицы - только на чтение](https://docs.google.com/spreadsheets/d/1dkpFEvOqWvVM_cJAnKvaQ0Ne8MmGPjy33cvPeeSwi-o/edit?usp=sharing)
+# Бот ачивок ДОЛ Бауманец
 
 ## Функциональное наполнение доступно в описании основной библиотеки [Spread Sheet Bot](https://github.com/twobrowin-study/spreadsheetbot-lib)
+
+Также добавлено управление ачивками на основе статусной модели:
+
+* Не выдано
+* Выдано, отправить уведомление
+* Выдано, уведомление отправлено
+* Выдано, заказано изготовление, уведомление отправлено
+* Отозвано, отправить уведомление
+* Отозвано, уведомление отправлено
+* Требуется определить статус
 
 ## Запуск приложения
 
@@ -12,9 +20,9 @@
 
 ## Сборка и запуск Docker контейнера
 
-`docker build -t twobrowin/spreadsheet-bot:latest .`
+`docker build -t twobrowin/baumanec-achievments-bot:latest .`
 
-`docker push twobrowin/spreadsheet-bot:latest`
+`docker push twobrowin/baumanec-achievments-bot:latest`
 
 `ansible-playbook playbook.yaml -i hosts.ini`
 
