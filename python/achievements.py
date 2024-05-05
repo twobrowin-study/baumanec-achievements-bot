@@ -46,9 +46,9 @@ class AchievementsAdapterClass(AbstractSheetAdapter):
         return InlineKeyboardMarkup([
             [InlineKeyboardButton(
                 text = 
-                    f"{achivment.replace('*','')} {I18n.send_to_manufacture}"
+                    Settings.send_to_manufacture_template.format(achievement = achivment.replace('*',''))
                     if status != I18n.issued_notified_to_manufacture 
-                    else f"{achivment.replace('*','')} {I18n.remove_from_manufacture}",
+                    else Settings.remove_from_manufacture_template.format(achievement = achivment.replace('*','')),
                 callback_data = 
                     self.CALLBACK_ACHIEVMENT_MANUFACTURE_TEMPLATE.format(achievment_id = self.as_df.columns.get_loc(achivment))
             )]
@@ -89,7 +89,7 @@ class AchievementsAdapterClass(AbstractSheetAdapter):
         return InlineKeyboardMarkup([
             [
                 InlineKeyboardButton(
-                    text=f"{achivment.replace('*','')} {I18n.send_to_manufacture}",
+                    text=Settings.send_to_manufacture_template.format(achievement = achivment.replace('*','')),
                     callback_data = 
                         self.CALLBACK_ACHIEVMENT_MANUFACTURE_TEMPLATE.format(achievment_id = self.as_df.columns.get_loc(achivment))
                 )

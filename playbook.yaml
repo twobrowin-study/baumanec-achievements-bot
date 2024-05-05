@@ -14,7 +14,7 @@
     - name: Run bot docker service
       docker_swarm_service:
         name: baumanec-achievments-bot
-        image: twobrowin/baumanec-achievments-bot:1.0.1
+        image: twobrowin/baumanec-achievments-bot:1.0.2
         env:
           TZ: "Europe/Moscow"
           

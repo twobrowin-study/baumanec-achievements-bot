@@ -131,10 +131,10 @@ async def achivment_manufacture_list_callback(update: Update, context: ContextTy
             [
                 butt if butt.callback_data != update.callback_query.data
                      else InlineKeyboardButton(
-                        text = 
-                            f"{achivment.replace('*','')} {I18n.remove_from_manufacture}"
-                            if achivment_status != I18n.issued_notified_to_manufacture 
-                            else f"{achivment.replace('*','')} {I18n.send_to_manufacture}",
+                        text =
+                            Settings.remove_from_manufacture_template.format(achievement = achivment.replace('*',''))
+                                if achivment_status != I18n.issued_notified_to_manufacture 
+                            else Settings.send_to_manufacture_template.format(achievement = achivment.replace('*','')),
                         callback_data = update.callback_query.data
                      )
             ]
