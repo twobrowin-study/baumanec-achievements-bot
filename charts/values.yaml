@@ -1,0 +1,26 @@
+container:
+  image: twobrowin/baumanec-achievments-bot:1.0.3
+  imagePullPolicy: IfNotPresent
+
+  env:
+  - name: TZ
+    value: Europe/Moscow
+  - name: SWITCH_UPDATE_TIME
+    value: "15"
+  - name: SETTINGS_UPDATE_TIME
+    value: "35"
+  - name: BOT_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: baumanec-achievements-bot
+        key: bot_token
+  - name: SHEETS_ACC_JSON
+    valueFrom:
+      secretKeyRef:
+        name: baumanec-achievements-bot
+        key: sheet_acc_json
+  - name: SHEETS_LINK
+    valueFrom:
+      secretKeyRef:
+        name: baumanec-achievements-bot
+        key: sheets_link

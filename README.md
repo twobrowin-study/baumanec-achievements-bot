@@ -24,13 +24,17 @@
 
 `docker push twobrowin/baumanec-achievments-bot:latest`
 
-`ansible-playbook playbook.yaml -i hosts.ini`
+`helm upgrade --install --debug -n baumanec baumanec-achievements-bot ./charts`
 
-Требуются дополнительные файлы:
+## Зависимости k8s
 
-* `hosts.ini` - описание подключение к хосту для развёртывания бота
+Следует создать неймспейс `baumanec` и секрет `baumanec-achievements-bot` в нём, поля секрета:
 
-* `secrets.yaml` - переменные `bot_token`, `sheet_acc_json`, `sheets_link`
+* `bot_token` - токен подключения к Telegram боту
+
+* `sheets_acc_json` - JWT токен подключения к Google Spreadsheet API
+
+* `sheets_link` - Ссылка на подключение к требуемой таблице - боту требуется доступ на запись, может быть передан как в ссылке, так и назначен инстрементами Google Spreadsheet
 
 ## Переменные окружения для запуска приложения
 
